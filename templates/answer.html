@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<head>
+<style type="text/css">
+#Announcement {
+
+padding-top: 10px;
+}
+.explain{
+display:none;
+margin-top:10px;
+font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+.option{
+display:none;
+}
+
+.question{
+margin-top:7px;
+margin-bottom:7px;
+padding:10px;
+
+}
+.quiz-content{
+font-family: Verdana, sans-serif;
+}
+#button{
+	margin-top:20px;
+	margin-left:0px;
+	margin-right:0px;
+}
+fieldset{
+margin:20px;
+padding:10px;
+}
+
+.fill input{
+border-style: solid;
+border-left: none;
+border-top: none;
+border-right: none;
+vertical-align: middle;
+float:left;
+}
+.fill label{
+float:left;
+}
+#headimg{
+margin-left:70px;
+}
+.true{
+color:green;
+font-weight:bold;
+float:left;
+}
+.false{
+color:red;
+font-weight:bold;
+float:left;
+}
+judge{
+float:left;
+}
+.correctE{
+display:none;
+}
+radio{
+}
+.answers{
+padding-top:12px;
+font-family: Verdana, sans-serif;
+}
+#title{
+
+}
+form{
+margin-left: 10%;
+margin-right: 10%;
+}
+h1{
+margin-left: 11%;
+margin-right: 11%;
+}
+
+.header{display: block; text-align: center;margin: auto; margin-left: 10%;margin-right: 10%;}
+.header img{width:100px;display: inline-block;float:left;
+}
+.header div{display: block;}
+.header h1,h2{display: block; margin-bottom: 0;}
+.nav{width: 100%; display: block; clear: both; margin: auto; text-align: center;}
+.nav{border-top: 1px solid #999;border-bottom: 1px solid #999;margin: 1em 0;}
+.nav a{display:inline-block;margin: 5px 0px;padding: 5px 10px;}
+.nav a:hover{background-color: #00468E;color:white;}
+.section h1{font-size:13.5pt;background-color: #ddd; color:white;padding:3px 10px;}
+.section ul{padding-left: 1.25em;}
+.section ul li{line-height: 2em;}
+.section table th,.section table td{text-align: left;padding-right:20px;}
+.section table td{line-height: 1.5em;}
+.section div{}
+.section h2{font-size: 12pt;}
+.footer{display: block; border-top: 1px solid #999;margin: 2em 0; padding: 1em 1em 0 1em;}
+
+
+/*导航栏*/
+	ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #e7e7e7;
+    background-color: #f3f3f3;
+}
+
+li {
+    float: right;
+}
+
+li a {
+		font-family:"宋体";
+    display: block;
+    color: #666;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+		font-family:"宋体";
+    background-color: #ddd;
+}
+
+li a.active {
+		font-family:"宋体";
+    color: white;
+    background-color: #4CAF50;
+}
+
+
+</style>
+<title>测试</title>
+</head>
+<body>
+<div class="header"><!-- 标题栏 -->
+<!--	<div id="headimg" ><img src="images/zju_logo.jpg">&lt;!&ndash; logo &ndash;&gt; </div>-->
+	 <div><p2>.</p2></div>
+  <div><p2>.</p2></div>
+  <h1>The Answer System</h1>
+</div>
+
+ <header role="banner" class="probootstrap-header">
+    <div class="container">
+
+
+        <nav role="navigation" class="probootstrap-nav hidden-xs">
+  <ul>
+  <li><a href="{{url_for('index')}}">主页</a></li>
+  <li><a class="active" href="{{url_for('root')}}">水鸟识别</a></li>
+  <li><a href="{{url_for('about')}}">关于我们</a></li>
+
+
+        </ul>
+        </nav>
+    </div>
+  </header>
+
+
+<div class="section" id="Announcement">
+	<h1> &nbsp</h1>
+	<div>
+		<form>
+		<fieldset>
+		<legend >
+		选择题
+		</legend>
+			<div class="question">
+				<label class="quiz-content">
+					1. 北京2008年第29届奥运会中的吉祥物为五个福娃，其中有一个吉祥物的外形是一只展翅飞翔的燕子，其造型创意来自北京传统的沙燕风筝。这个吉祥物的昵称是
+				</label>
+				<div class="answers">
+					<input class="radio" type="radio" value="A" name="q1" >A. 妮妮</br>
+
+					<input class="radio" type="radio" value="B" name="q1" >B. 晶晶</br>
+
+					<input class="radio" type="radio" value="C" name="q1" >C. 贝贝</br>
+
+					<input class="radio" type="radio" value="C" name="q1" >C. 迎迎</br>
+				</div>
+				<div class="explain">
+					<div class="option">A</div>
+					<div class="correctE">Correct. 妮妮来自天空，是一只展翅飞翔的燕子，其造型创意来自北京传统的沙燕风筝。“燕”还代表燕京(古代北京的称谓)。妮妮把春天和喜悦带给人们，飞过之处播撒“祝您好运”的美好祝福。天真无邪、欢快矫捷的妮妮将在体操比赛中闪亮登场，她代表奥林匹克五环中绿色的一环。</div>
+					<div class="incorrectE">Incorrect. Review the social media VGI part of Lecture 4.</div>
+				</div>
+			</div><!-- 这是一道题的结尾 -->
+
+			<div class="question">
+				<label class="quiz-content">
+					2.猛禽指的是?
+				</label>
+				<div class="answers">
+					<input class="radio" type="radio" value="A" name="q2" >A. 能吃肉的鸟</br>
+					<input class="radio" type="radio" value="B" name="q2" >B. 鹰、鸮等捕食性的鸟</br>
+					<input class="radio" type="radio" value="C" name="q2" >C. 专抓活食的鸟</br>
+</input>
+				</div>
+				<div class="explain">
+					<div class="option">C</div>
+					<div class="C">Correct. 猛禽是鸟类六大生态类群之一，涵盖了鸟类传统分类系统中隼形目和鸮形目的所有种。猛禽包括鹰、雕、鵟、鸢、鹫、鹞、鹗、隼、鸮、鸺鹠等次级生态类群，均为掠食性鸟类。在生态系统中，猛禽个体数量较其他类群少，但是却处于食物链的顶层，扮演了十分重要的角色。另外有绰号称为“战斗机”。</div>
+					<div class="B">Incorrect. </div>
+					<div class="D">Incorrect. </div>
+					<div class="A">Incorrect. </div>
+				</div>
+			</div><!-- 这是一道题的结尾 -->
+
+			<div class="question">
+				<label class="quiz-content">
+					3. 根据鸟类是否迁徙以及迁徙方式的不同，可以分为留鸟、候鸟和迷鸟等，比如家燕和金腰燕在浙江属于
+				</label>
+				<div class="answers">
+					<input class="radio" type="radio" value="A" name="q3" >A. 冬候鸟</br>
+
+					<input class="radio" type="radio" value="B" name="q3" >B. 旅鸟</br>
+
+					<input class="radio" type="radio" value="C" name="q3" >C. 夏候鸟</br>
+
+					<input class="radio" type="radio" value="D" name="q3" >D. 留鸟</br>
+				</div>
+				<div class="explain">
+					<div class="option">D</div>
+					<div class="D">Correct.终年生活在一个地区，不随季节迁徙的鸟统称留鸟。它们通常终年在其出生地（或称繁殖区）内生活。(引：或终年栖居繁殖地区而不迁徙的鸟类，如喜鹊、麻雀等。世界各地均有，南方种类较多，北方留鸟，均为耐寒种类，如松鸡、雷鸟、雪鸡等)中国的留鸟有麻雀、乌鸦、白头翁、喜鹊、画眉、鱼鹰、啄木鸟、鹰等。留鸟在冬季很难觅食，每到冬季，有的留鸟就成群结队地生活在一起。啄取植物的果实和种子为食。在某地一年四季皆可见的鸟类。 终年生活在一个地区，不随季节迁徙的鸟叫留鸟。它们通常终年在其出生地(或称繁殖区)内生活。</div>
+					<div class="B">Incorrect. </div>
+					<div class="C">Incorrect. </div>
+					<div class="A">Incorrect. </div>
+				</div>
+			</div><!-- 这是一道题的结尾 -->
+
+			<div class="question">
+				<label class="quiz-content">
+					4.香港米埔在潮位2.0米以上时适宜观察水鸟，而福田红树林生态公园则是潮位（ ）以下时才适宜观察水鸟。
+				</label>
+				<div class="answers">
+					<input class="radio" type="radio" value="A" name="q4" >A. 1.0米</br>
+
+					<input class="radio" type="radio" value="B" name="q4" >B. 2.0米</br>
+
+					<input class="radio" type="radio" value="C" name="q4" >C. 3.0米</br>
+
+					<input class="radio" type="radio" value="D" name="q4" >D. 4.0米</br>
+				</div>
+				<div class="explain">
+					<div class="option">A</div>
+					<div class="A">Correct.福田红树林生态公园，2012年开始筹建，2015年12月开园，是一家免费向公众开放的市政公园，同时又是一家兼顾生态保育与湿地教育的生态公园 [14]  。
+福田红树林生态公园，既“管理着”深圳湾红树林滨海湿地的生物廊道，也守护着生活在其中的自然生灵；同时，还开启了市民公众亲近湿地、了解和学习环境保护之门，因此被称为“深圳湾的一把小钥匙” [9] </div>
+					<div class="B">Incorrect. </div>
+					<div class="C">Incorrect. </div>
+					<div class="D">Incorrect. </div>
+				</div>
+			</div><!-- 这是一道题的结尾 -->
+
+
+		</fieldset>
+<!--		<fieldset>-->
+<!--		<legend >-->
+<!--		多选题-->
+<!--		</legend>-->
+<!--			<div class="question">-->
+<!--				<label class="quiz-content">-->
+<!--					2. Which of the following are examples of peer-production VGI?-->
+<!--				</label>-->
+<!--				<div class="answers">-->
+<!--					<input class="checkbox" type="checkbox" value="A" name="q3" >A. Geotagged tweets</br>-->
+<!--					<input class="checkbox" type="checkbox" value="B" name="q3" >B. OpenStreetMap data	</br>-->
+<!--					<input class="checkbox" type="checkbox" value="C" name="q3" >C. Geotagged photos</br>-->
+<!--					<input class="checkbox" type="checkbox" value="D" name="q3" >D. Geotagged Wikipedia articles</br>-->
+<!--				</div>-->
+<!--				<div class="explain">-->
+<!--					<div class="option">BD</div>-->
+<!--					<div class="correctE">Correct. Social media VGI has unprecedented amounts of platial information.</div>-->
+<!--					<div class="incorrectE">Incorrect. Review the social media VGI part of Lecture 4.</div>-->
+<!--				</div>-->
+<!--		</div>&lt;!&ndash;这是一道题的结尾 &ndash;&gt;-->
+<!--		</fieldset>-->
+<!--		<fieldset>-->
+<!--		<legend>-->
+		<!-- 判断题
+		</legend>
+			<div class="question">
+				<label class="quiz-content">
+					1. Google does not use any VGI in Google Maps because of concerns about accuracy.
+				</label>
+				<div class="answers">
+					<input class="radio" type="radio" value="True" name="q3" > True
+					<input class="radio" type="radio" value="False" name="q3" > False
+
+				</div>
+				<div class="explain">
+					<div class="option">True</div>
+					<div class="correctE"> Correct. Google gathers peer-production VGI quite similar to that in OpenStreetMap through its Google Map Maker program.</div>
+					<div class="incorrectE">Incorrect. Google gathers peer-production VGI quite similar to that in OpenStreetMap through its Google Map Maker program.</div>
+				</div>
+			</div>这是一道题的结尾
+		</fieldset>
+		<fieldset>
+		<legend>
+		填空题
+		</legend>
+			<div class="fill">
+				<div class="answers">
+					<label class="quiz-content">
+					题目4，这道题是填空题
+					</label>
+					<input class="text" type="text" value="" name="q3" >
+					<div class="quiz-content">了 </br></div>
+				</div>
+
+				<div class="explain">
+					<div class="option">string</div>
+					<div class="correctE"> Correct. string</div>
+					<div class="incorrectE">Incorrect. string</div>
+				</div>
+			</div> 这是一道题的结尾
+		</fieldset> -->
+
+			<div class="submit">
+				<center><input id="button" type="button" value="提交" onclick="return valid();"></center>
+			</div>
+		</form>
+	</div>
+</div>
+
+<script type="text/javascript">
+   function valid(){
+
+		var ex=document.getElementsByClassName("explain");
+		var an=document.getElementsByClassName("answers");
+
+		for(var i=0;i<ex.length;i++){
+			var answerDot=ex[i];
+			answerDot.style.display="block";
+			//实现显示隐藏答案
+
+			var dot=document.createElement("div");
+			option=ex[i].getElementsByClassName("option");
+			//alert(option[0].innerText);//获得正确选项
+			var readerChoice="";
+			var cc=an[i].getElementsByClassName("radio");
+			if(cc.length==0){
+				cc=an[i].getElementsByClassName("checkbox");
+				if(cc.length==0){
+					cc=an[i].getElementsByClassName("text");
+					//alert(cc[0].value);
+					readerChoice=cc[0].value;
+				}
+			}
+
+			for(var j=0;j<cc.length;j++){
+				if(cc[j].checked){
+					readerChoice=readerChoice+cc[j].value;
+					//alert(readerChoice);
+				}
+			}
+
+			//获得读者选的答案
+			var theJudge=document.createElement("div");
+			var cc=document.createElement("div");
+			var ce=ex[i].getElementsByClassName("correctE");
+			var ue=ex[i].getElementsByClassName("incorrectE");
+			if(readerChoice==option[0].innerText){	//correctE的情况
+				theJudge.innerText="√";
+				theJudge.setAttribute("class","true");
+			}else{
+				theJudge.innerText="×";
+				theJudge.setAttribute("class","false");
+			}
+			if(readerChoice==""){
+				readerChoice="?";
+			}
+			cc.innerText=",your answer is "+readerChoice+" .";
+
+			var jj=ex[i].getElementsByClassName("judge");
+			if(jj.length>0){
+				//alert(jj.length);
+				//jj[0].parentNode;
+				ex[i].removeChild(jj[0].parentNode);
+			}
+
+			//alert(readerChoice);
+			cc.setAttribute("class","judge");
+			if(answerDot.getElementsByClassName("judge").length>0){
+
+			}else{
+				answerDot.insertBefore(dot,answerDot.childNodes[0]);
+				dot.insertBefore(cc,dot.childNodes[0]);	//插入your answer is
+				dot.insertBefore(theJudge,dot.childNodes[0]);//插入
+			}
+			if(ce.length>=1&&ue.length>=1){		//correctE和uncorrect的情况
+				if(readerChoice==option[0].innerText){	//correctE的情况
+					ce[0].style.display="block";
+					ue[0].style.display="none";
+				}else{
+					ce[0].style.display="none";
+					ue[0].style.display="block";
+				}
+				cc.innerText=",your answer is "+readerChoice+" .";
+				cc.setAttribute("class","judge");
+				answerDot.insertBefore(dot,answerDot.childNodes[0]);
+				dot.insertBefore(cc,dot.childNodes[0]);	//插入your answer is
+				dot.insertBefore(theJudge,dot.childNodes[0]);//插入
+			}else {							//
+				var ABCD=new Array(4);
+				var strabcd=["A","B","C","D"];
+				var abclength=0;
+				for(var j=0;j<4;j++){
+					ABCD[j]=ex[i].getElementsByClassName(strabcd[j]);
+					if(ABCD[j].length>0){
+						abclength++;
+					}
+				}
+				if(abclength>0){
+					for(var j=0;j<abclength;j++){
+						if(readerChoice==strabcd[j]){
+							ABCD[j][0].style.display="block";
+						}else{
+							ABCD[j][0].style.display="none";
+						}
+					}
+				}
+			}
+		}
+     return true;
+   }
+</script>
+
+<p>
+<br><br><br><br><br><br><br><br>
+</p>
+</body>
+</html>

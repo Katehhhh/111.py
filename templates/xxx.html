@@ -1,0 +1,246 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <style>
+	a1.uploader
+	{
+	display: block;
+	margin: 20px auto 0;
+	width: 150px;
+	}
+
+	/*文字*/
+body
+{
+	background-color:#FFFFFF;
+	text-align:center;
+}
+h1
+{
+	color:black;
+	font-family:"Times New Roman";
+	text-align:center;
+}
+h5
+{
+	color:gray;
+	font-family:"Times New Roman"
+	text-align:center;
+}
+
+	p1
+	{
+		font-family:"Times New Roman";
+	font-size:15px;
+	}
+	p2
+	{
+		font-family:"Times New Roman";
+	font-size:1px;
+	text-color=#FFFFFF;
+	}
+p3
+{
+	font-family:"Times New Roman";
+	font-size:23px;
+	border-style:inset;
+	border-width:10px;
+	width:600px;
+	border-color:#00CC66;
+}		
+p4
+{
+	font-family:"Times New Roman";
+	font-size:15px;
+	border-style:inset;
+	border-width:50px;
+	width:300px;
+	border-color:#FFF000;
+}		
+P5
+{
+	color:grey;
+}
+
+
+/*导航栏*/	
+	ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #e7e7e7;
+    background-color: #f3f3f3;
+}
+
+li {
+    float: right;
+}
+
+li a {
+		font-family:"宋体";
+    display: block;
+    color: #666;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+		font-family:"宋体";
+    background-color: #ddd;
+}
+
+li a.active {
+		font-family:"宋体";
+    color: white;
+    background-color: #4CAF50;
+}
+
+p.dashed {border-style:dashed;
+           border-top-color:#FFFFFF;
+           border-bottom-color:grey;}
+</style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>水鸟识别</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+   
+    <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet"> -->
+    
+
+
+    <!--[if lt IE 9]>
+      <script src="{{ url_for('root', filename='js/vendor/html5shiv.min.js') }}"></script>
+      <script src="{{ url_for('root', filename='js/vendor/respond.min.js') }}"></script>
+    <![endif]-->
+  </head>
+  
+  
+  <body>
+ 
+  <div><p2>.</p2></div>
+  <div><p2>.</p2></div>
+  <h1>The Recognition systerm</h1>
+ <!-- START: header -->
+  <div class="probootstrap-loader"></div>
+
+  <header role="banner" class="probootstrap-header">
+    <div class="container">
+
+
+        <nav role="navigation" class="probootstrap-nav hidden-xs">
+  <ul>
+  <li><a href="{{url_for('index')}}">主页</a></li>
+  <li><a class="active" href="{{url_for('root')}}">水鸟识别</a></li>
+  <li><a href="{{url_for('video')}}">视频识别</a></li>
+  <li><a href="{{url_for('about')}}">关于我们</a></li>
+  <li><a href="{{url_for('answer')}}">答题</a></li>
+        </ul>
+        </nav>
+    </div>
+  </header>
+  <!-- END: header -->
+
+
+  <div class="probootstrap-main">
+    <section class="probootstrap-section">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-4">
+          <div class="service left-icon probootstrap-animate">
+
+            <div class="icon">
+              <i class="icon-laptop3"></i>
+            </div>
+            <div class="text">
+              <br><p3 class="heading">Step.1</p3>
+             <br><br> <p5>选择一张图片</p5><br><br>
+
+            </div>
+
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service left-icon probootstrap-animate">
+            <div class="icon">
+              <i class="icon-presentation"></i>
+            </div>
+            <div class="text">
+              <p3 class="heading">Step.2</p3>
+             <br> <br><p5>点击上传按钮</p5>
+<br>
+<br>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service left-icon probootstrap-animate">
+            <div class="icon">
+              <i class="icon-wallet2"></i>
+            </div>
+            <div class="text">
+              <p3 class="heading">Step.3</p3>
+              <br><br><p5>等待显示结果</p5><br>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <p class="dashed">^-^ </p>
+
+  
+       <form action="{{ url_for('root') }}" method=post enctype=multipart/form-data id=upload-form>
+     
+   <br>
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-7" >
+          <input id="file-picker" type="file" name="file" accept="image/*" multiple>
+          
+         <div>
+          <center>
+         <img href="/static/img/liangxi.jpg">
+         </center>
+         </div>
+      
+        </div>
+        <div class="col-md-4">
+
+          <h3 class="heading">请选择图片后点击</h3>
+          
+          <center>  <input type=submit value='上传' ></center>
+            <h3>上传后显示结果</h3>
+        </div>
+      
+      </div> 
+
+</form>
+    </section>
+    <!-- END section -->
+
+
+  </div>
+  <footer class="probootstrap-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <div class="gototop js-top">
+    <a href="#" class="js-gotop"><i class="icon-chevron-thin-up"></i></a>
+  </div>
+
+  
+
+  </body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+    <title>Home</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    
+    <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet"> -->
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles-merged.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/custom.css') }}">
+    <!--[if lt IE 9]>
+      <script src="js/vendor/html5shiv.min.js"></script>
+      <script src="js/vendor/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  
+  
+  <body>
+
+  <!-- START: header -->
+  <div class="probootstrap-loader"></div>
+
+  <header role="banner" class="probootstrap-header">
+    <div class="container">
+
+        <a href="#" class="probootstrap-burger-menu visible-xs" ><i>Menu</i></a>
+        <div class="mobile-menu-overlay"></div>
+
+        <nav role="navigation" class="probootstrap-nav hidden-xs">
+  <ul>
+  <li><a class="active" href="{{ url_for('index') }}">主页</a></li>
+  <li><a href="{{ url_for('root') }}">水鸟识别</a></li>
+  <li><a href="{{url_for('video')}}">视频识别</a></li>
+  <li><a href="{{ url_for('about') }}">关于我们</a></li>
+          <div class="extra-text visible-xs"> 
+            <a href="#" class="probootstrap-burger-menu"><i>Menu</i></a>
+            <h5>Address</h5>
+            <p>no35 QinghuaEast Road</p>
+            <h5>Connect</h5>
+            <ul class="social-buttons">
+              <li><a href="#"><i class="icon-twitter"></i></a></li>
+              <li><a href="#"><i class="icon-facebook2"></i></a></li>
+              <li><a href="#"><i class="icon-instagram2"></i></a></li>
+            </ul>
+          </div>
+        </nav>
+    </div>
+  </header>
+  <!-- END: header -->
+
+  <div class="probootstrap-main">
+  
+    <section class="probootstrap-section-half">
+      <div class="probootstrap-image probootstrap-animate" data-animate-effect="fadeIn" style=" background-image: url(static/img/1.jpg)"></div>
+      <div class="probootstrap-text">
+        <div class="probootstrap-inner probootstrap-animate">
+          <h1 class="heading">基于深度学习的水鸟识别系统</h1>
+          <p>Created by : Group 知了<br>
+          </p>
+          <p>目前对于湿地自然保护区的水鸟观测主要依赖于经验的人工目视判读，这不仅对监测人员的工作经验有较高的要求，同时随着数据获取手段的增加，海量的检测数据也对实时水鸟监测提出了更高的要求。如何自动分析和理解海量检测图像与视频中水鸟目标是目前湿地生态监测与管理所面临的重要挑战。针对以上问题，本项目拟构建水鸟自动检测与识别框架。</p>
+          <h4>指导老师 王晗</h4>
+        </div>
+      </div>
+    </section>
+    <!-- END section -->
+  </div>
+
+  <footer class="probootstrap-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <p>北京林业大学</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+
+  <div class="gototop js-top">
+    <a href="#" class="js-gotop"><i class="icon-chevron-thin-up"></i></a>
+  </div>
+  
+  
+  <script type="text/javascript" src="{{ url_for('static', filename='js/scripts.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/main.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/custom.js') }}"></script>
+  </body>
+</html>
