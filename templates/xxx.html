@@ -26,7 +26,7 @@ h1
 h5
 {
 	color:gray;
-	font-family:"Times New Roman"
+	font-family:"Times New Roman";
 	text-align:center;
 }
 
@@ -39,7 +39,7 @@ h5
 	{
 		font-family:"Times New Roman";
 	font-size:1px;
-	text-color=#FFFFFF;
+	text-color:#FFFFFF;
 	}
 p3
 {
@@ -101,16 +101,18 @@ li a.active {
 
 p.dashed {border-style:dashed;
            border-top-color:#FFFFFF;
-           border-bottom-color:grey;}
+           border-bottom-color:grey;
+}
+
 </style>
+
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>水鸟识别</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
    
     <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet"> -->
-    
-
 
     <!--[if lt IE 9]>
       <script src="{{ url_for('root', filename='js/vendor/html5shiv.min.js') }}"></script>
@@ -136,6 +138,7 @@ p.dashed {border-style:dashed;
   <li><a href="{{url_for('index')}}">主页</a></li>
   <li><a class="active" href="{{url_for('root')}}">水鸟识别</a></li>
   <li><a href="{{url_for('video')}}">视频识别</a></li>
+      <li><a href="{{url_for('test')}}">音频识别</a></li>
   <li><a href="{{url_for('about')}}">关于我们</a></li>
   <li><a href="{{url_for('answer')}}">答题</a></li>
         </ul>
@@ -143,8 +146,6 @@ p.dashed {border-style:dashed;
     </div>
   </header>
   <!-- END: header -->
-
-
   <div class="probootstrap-main">
     <section class="probootstrap-section">
     <div class="container">
@@ -193,38 +194,37 @@ p.dashed {border-style:dashed;
       </div>
       <p class="dashed">^-^ </p>
 
-  
+
        <form action="{{ url_for('root') }}" method=post enctype=multipart/form-data id=upload-form>
-     
+
    <br>
       <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-7" >
           <input id="file-picker" type="file" name="file" accept="image/*" multiple>
-          
+
          <div>
           <center>
          <img href="/static/img/liangxi.jpg">
          </center>
          </div>
-      
+
         </div>
         <div class="col-md-4">
 
           <h3 class="heading">请选择图片后点击</h3>
-          
-          <center>  <input type=submit value='上传' ></center>
+
+          <input type=submit value='上传' >
             <h3>上传后显示结果</h3>
         </div>
-      
-      </div> 
 
+      </div>
+   </br>
 </form>
     </section>
     <!-- END section -->
-
-
   </div>
+
   <footer class="probootstrap-footer">
     <div class="container">
       <div class="row">

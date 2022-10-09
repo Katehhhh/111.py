@@ -1,17 +1,21 @@
+# -*- coding: utf-8 -*-
 # coding=utf-8
 
 import os
 import importlib,sys
+import subprocess
 importlib.reload(sys)
-import time
-from flask import request, send_from_directory
-from flask import Flask, request, redirect, url_for, render_template
+from flask import Flask, request, render_template
 import uuid
 import tensorflow.compat.v1 as tf
+import pandas as pd
+import time
 FLAGS = tf.app.flags
 from classify_image import run_inference_on_image
 from classify_video import extract_video_keyframes
-ALLOWED_EXTENSIONS = set(['jpg', 'JPG', 'jpeg', 'JPEG', 'png','mp4'])
+
+#文件格式限制
+ALLOWED_EXTENSIONS = set(['jpg', 'JPG', 'jpeg', 'JPEG', 'png','mp4','wav','mp3'])
 
 FLAGS = tf.app.flags.FLAGS
 
@@ -19,19 +23,53 @@ tf.app.flags.DEFINE_string('model_dir', '', """Path to graph_def pb, """)
 tf.app.flags.DEFINE_string('model_name', 'my_inception_v4_freeze.pb', '')
 tf.app.flags.DEFINE_string('label_file', 'label.txt', '')
 tf.app.flags.DEFINE_string('upload_folder', './static', '')#path of pic
+tf.app.flags.DEFINE_string('audio_upload_folder', './example', '')#path of audio
 tf.app.flags.DEFINE_integer('num_top_predictions', 5,
                             """Display this many predictions.""")
 
 tf.app.flags.DEFINE_integer('port', '9865',
                             'server with port,if no port, use deault port 80')
-tf.app.flags.DEFINE_boolean('debug', False, '')
+tf.app.flags.DEFINE_boolean('debug', True, '')
 UPLOAD_FOLDER = FLAGS.upload_folder
-
-#文件格式限制
-ALLOWED_EXTENSIONS = set(['jpg', 'JPG', 'jpeg', 'JPEG', 'png','mp4'])
+Audio_UPLOAD_FOLDER = FLAGS.audio_upload_folder
 
 app = Flask(__name__)
 app._static_folder = UPLOAD_FOLDER
+
+
+def run(cmd, shell=False) -> (int, str):
+    """
+    开启子进程，执行对应指令，控制台打印执行过程，然后返回子进程执行的状态码和执行返回的数据
+    :param cmd: 子进程命令
+    :param shell: 是否开启shell
+    :return: 子进程状态码和执行结果
+    """
+    print('\033[1;32m************** START **************\033[0m') # 使用绿色字体
+    p = subprocess.Popen(cmd, shell=shell, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    result = []
+    while p.poll() is None:
+        line = p.stdout.readline().strip()
+        if line:
+            line = _decode_data(line)
+            result.append(line)
+            print('\033[1;35m{0}\033[0m'.format(line))
+        # 清空缓存
+        sys.stdout.flush()
+        sys.stderr.flush()
+    # 判断返回码状态
+    if p.returncode == 0:
+        print('\033[1;32m************** SUCCESS **************\033[0m')
+    else:
+        print('\033[1;31m************** FAILED **************\033[0m')
+    return p.returncode, '\r\n'.join(result)
+
+
+def _decode_data(byte_data: bytes):
+    try:
+        return byte_data.decode('UTF-8')
+    except UnicodeDecodeError:
+        return byte_data.decode('GB18030')
+
 
 #该方法检验文件的后缀是否符合上面的要求
 def allowed_files(filename):
@@ -160,10 +198,54 @@ def video():
 
     return result2
 
-
+@app.route("/test", methods=['GET','POST'])
+def test():
+    result = render_template("test.html")
+    if request.method == 'POST':
+        file = request.files['file']
+        file_name = file.filename
+        args = request.form
+        print(args)
+        cmd = 'python analyze.py --locale zh '
+        for arg in args:
+            cmd += '--'+ arg +' '+ args[arg] +' '
+        print(cmd)
+        print(file_name)
+        base_name = os.path.splitext(file_name)[0]
+        print(base_name)
+        if file and allowed_files(file_name):
+            filename = file_name
+            file_path = os.path.join(Audio_UPLOAD_FOLDER, filename)
+            print(Audio_UPLOAD_FOLDER)
+            print(file_path)
+            file.save(file_path)
+            type_name = 'N/A'
+            print('file saved to %s' % file_path)
+            # 在这里启动新的进程，阻塞，仅仅给输出提供异步方法
+            return_code, data = run(cmd)
+            print('return code:', return_code,'data:', data)
+            csv_name = Audio_UPLOAD_FOLDER+'/'+base_name+'.BirdNET.results.csv'
+            csv_base_name = base_name+'.BirdNET.results.csv'
+            # 读取csv文件
+            while not os.path.isfile(Audio_UPLOAD_FOLDER+'/'+base_name+'.BirdNET.results.csv'):
+                time.sleep(100)
+                print("Please Wait")
+            data = pd.read_csv(Audio_UPLOAD_FOLDER+'/'+base_name+'.BirdNET.results.csv', sep=',',encoding='gbk')
+            start = data["Start (s)"]
+            end = data["End (s)"]
+            CN = data["Common name"]
+            conf = data["Confidence"]
+            format_string = ''
+            for i in range(len(start)):
+                format_string += f'{start[i]} , {end[i]}, {CN[i]}, {conf[i]}<BR>'
+            ret_string = format_string + '<BR>'
+            os.remove(Audio_UPLOAD_FOLDER+'/'+file_name)
+            os.remove(csv_name)
+            return result+ret_string
+    return result
 
 if __name__ == "__main__":
     print('listening on port %d' % FLAGS.port)
-    app.run(host='127.0.0.1', port=FLAGS.port, debug=FLAGS.debug, threaded=True)
+    app.run(host='127.0.0.2', port=FLAGS.port, debug=FLAGS.debug, threaded=True)
 
 
